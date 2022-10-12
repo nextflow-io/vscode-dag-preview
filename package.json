@@ -1,0 +1,97 @@
+{
+  "name": "nextflow-dag-preview",
+  "displayName": "Nextflow DAG preview",
+  "description": "Adds a DAG preview for .nf files",
+  "version": "0.0.0",
+  "icon": "images/nextflow-icon-128x128.png",
+  "engines": {
+    "vscode": "^1.72.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Nextflow"
+  ],
+  "activationEvents": [
+    "onLanguage:groovy",
+    "onLanguage:nextflow",
+    "workspaceContains:*.nf",
+    "onCommand:nextflow-dag-preview.previewDAG"
+  ],
+  "homepage": "https://github.com/nextflow-io/vscode-dag-preview/blob/master/README.md",
+  "bugs": {
+    "url": "https://github.com/nextflow-io/vscode-dag-preview/issues"
+  },
+  "main": "./out/extension.js",
+  "publisher": "nextflow",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nextflow-io/vscode-dag-preview.git"
+  },
+  "contributes": {
+    "commands": [
+      {
+        "command": "nextflow-dag-preview.previewDAG",
+        "title": "Preview Nextflow pipeline DAG",
+        "icon": "$(open-preview)"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "nextflow-dag-preview.previewDAG",
+          "when": "editorLangId == groovy",
+          "alt": "nextflow-dag-preview.previewDAG",
+          "group": "navigation"
+        }
+      ]
+    },
+    "configuration": [
+      {
+        "title": "Nextflow DAG preview",
+        "properties": {
+          "nextflowDagPreview.nextflowPath": {
+            "default": "nextflow",
+            "type": "string"
+          },
+          "nextflowDagPreview.dagTmpFolder": {
+            "default": "~/.vscode-nf-dag-previews/",
+            "type": "string",
+            "description": "Temporal directory for storing nextflow DAG previews"
+          }
+        }
+      }
+    ]
+  },
+  "scripts": {
+    "prepare": "husky install",
+    "vscode:prepublish": "npm run compile",
+    "release": "standard-version",
+    "publish": "vsce publish -p $AZURE_DEVOPS_PAT",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.1.2",
+    "@commitlint/config-conventional": "^17.1.0",
+    "@types/glob": "^7.2.0",
+    "@types/mocha": "^9.1.1",
+    "@types/node": "16.x",
+    "@types/vscode": "^1.72.0",
+    "@typescript-eslint/eslint-plugin": "^5.27.0",
+    "@typescript-eslint/parser": "^5.27.0",
+    "@vscode/test-electron": "^2.1.3",
+    "eslint": "^8.16.0",
+    "glob": "^8.0.3",
+    "husky": "^8.0.1",
+    "mocha": "^10.0.0",
+    "standard-version": "^9.5.0",
+    "typescript": "^4.7.2",
+    "vsce": "^2.11.0"
+  },
+  "dependencies": {
+    "@vscode/webview-ui-toolkit": "^1.1.0"
+  }
+}
