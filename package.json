@@ -2,7 +2,7 @@
   "name": "nextflow-dag-preview",
   "displayName": "Nextflow DAG preview",
   "description": "Adds a DAG preview for .nf files",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "icon": "images/nextflow-icon-128x128.png",
   "engines": {
     "vscode": "^1.72.0"
