@@ -8,14 +8,14 @@ A simple extensions for previewing Nextflow-generated DAG for `.nf` files.
 
 ## Requirements
 
-For the extension to work, a valid `nextflow` executable should be available in your environment.
+For the extension to work, a valid `nextflow` executable should be available in your environment. Check out [https://www.nextflow.io/](https://www.nextflow.io/) for instructions on how to install it.
 
 ## Extension Settings
 
 This extension contributes the following settings:
 
-* `myExtension.enable`: enable/disable this extension
-* `myExtension.nextflowBinaryPath`: custom path to the `nextflow` binary used to generate the DAGs.
+* `nextflowDagPreview.nextflowPath`: custom path to the `nextflow` binary used to generate the DAGs.
+* `nextflowDagPreview.dagTmpFolder`: temporal directory for storing the nextflow DAG preview files
 
 ## Known Issues
 
