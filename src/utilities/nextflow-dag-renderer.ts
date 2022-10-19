@@ -30,8 +30,9 @@ export class NextflowDAGRenderer {
         this.errorMessage = undefined;
         this.diagram = '';
         this.render();
+		const binaryPath = getNextflowPath();
         const outputPath = `${getDAGsPath()}/preview.mmd`;
-		const command = `cd ~/code && nextflow run "${file}" -with-dag ${outputPath} -preview`;
+		const command = `cd ~/code && ${binaryPath} run "${file}" -with-dag ${outputPath} -preview`;
         try {
             const { stdout, stderr } = await exec(command);
             this.errorMessage = stderr;
