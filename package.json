@@ -71,6 +71,7 @@
     "prepare": "husky install",
     "vscode:prepublish": "npm run compile",
     "release": "standard-version",
+    "package": "vsce package",
     "publish": "vsce publish -p $AZURE_DEVOPS_PAT",
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
