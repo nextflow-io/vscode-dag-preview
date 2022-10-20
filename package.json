@@ -2,7 +2,7 @@
   "name": "nextflow-dag-preview",
   "displayName": "Nextflow DAG preview",
   "description": "Adds a DAG preview for .nf files",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "icon": "images/nextflow-icon-128x128.png",
   "engines": {
     "vscode": "^1.72.0"
@@ -57,6 +57,11 @@
             "default": "~/.vscode-nf-dag-previews/",
             "type": "string",
             "description": "Temporal directory for storing nextflow DAG previews"
+          },
+          "nextflowDagPreview.commandLineArgs": {
+            "default": "",
+            "type": "string",
+            "description": "Provide additional parameters to nextflow when generating the DAG"
           }
         }
       }
@@ -66,6 +71,7 @@
     "prepare": "husky install",
     "vscode:prepublish": "npm run compile",
     "release": "standard-version",
+    "package": "vsce package",
     "publish": "vsce publish -p $AZURE_DEVOPS_PAT",
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",

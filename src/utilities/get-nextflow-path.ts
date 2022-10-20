@@ -7,3 +7,7 @@ export function getNextflowPath(): string {
 export function getDAGsPath(): string {
     return (vscode.workspace.getConfiguration('nextflowDagPreview').get<string>('dagTmpFolder') ?? '.').replace(/\/$/, '');
 }
+
+export function getCommandLineArguments(): string {
+    return (vscode.workspace.getConfiguration('nextflowDagPreview').get<string>('commandLineArgs') ?? '');
+}
