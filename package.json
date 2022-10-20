@@ -57,6 +57,11 @@
             "default": "~/.vscode-nf-dag-previews/",
             "type": "string",
             "description": "Temporal directory for storing nextflow DAG previews"
+          },
+          "nextflowDagPreview.commandLineArgs": {
+            "default": "",
+            "type": "string",
+            "description": "Provide additional parameters to nextflow when generating the DAG"
           }
         }
       }

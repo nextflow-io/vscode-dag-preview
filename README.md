@@ -16,6 +16,7 @@ This extension contributes the following settings:
 
 * `nextflowDagPreview.nextflowPath`: custom path to the `nextflow` binary used to generate the DAGs.
 * `nextflowDagPreview.dagTmpFolder`: temporal directory for storing the nextflow DAG preview files
+* `nextflowDagPreview.commandLineArgs`: additional command line arguments to pass to nextflow when generating the DAG (e.g. for providing input parameters)
 
 ## Known Issues
 

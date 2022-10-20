@@ -2,12 +2,11 @@ const util = require('util');
 import * as vscode from 'vscode';
 const exec = util.promisify(require('child_process').exec);
 import { readFileSync } from 'fs';
-import { getDAGsPath, getNextflowPath } from './get-nextflow-path';
+import { getCommandLineArguments, getDAGsPath, getNextflowPath } from './get-nextflow-path';
 
 export class NextflowDAGRenderer {
 	
 	private _diagram?: string;
-	private nodes: string[] = [];
     private errorMessage?: string;
 
 	constructor(private webView: vscode.Webview, public name: string, diagram?: string) {
@@ -16,9 +15,8 @@ export class NextflowDAGRenderer {
 
 	private set diagram(dag: string) {
 		this._diagram = dag;
-		const nodeRegex = /p\d+[\(\[].*[\)\]]/ig;
-		this.nodes = dag.match(nodeRegex) ?? [];
 	}
+
 	private get diagram(): string {
 		return this._diagram ?? '';	
 	}
@@ -32,7 +30,7 @@ export class NextflowDAGRenderer {
         this.render();
 		const binaryPath = getNextflowPath();
         const outputPath = `${getDAGsPath()}/preview.mmd`;
-		const command = `cd ~/code && ${binaryPath} run "${file}" -with-dag ${outputPath} -preview`;
+		const command = `cd ~/code && ${binaryPath} run "${file}" -with-dag ${outputPath} -preview ${getCommandLineArguments()}`;
         try {
             const { stdout, stderr } = await exec(command);
             this.errorMessage = stderr;
